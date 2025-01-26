@@ -5,7 +5,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//Glowna klasa dla seansu filmowego, tutaj przechowuje film date godzine sale oraz liste siedzen. wykorzystuje tutaj polimorfizm do kalkulowania roznych cen
 
 public abstract class Screening {
     protected Movie movie;
@@ -29,13 +28,12 @@ public abstract class Screening {
 
 
     public void initSeatsLayout() {
-        // 1. Pobieramy seatLayout z hali
+
         SeatLayout layout = hall.getSeatLayout();
 
-        // 2. Iterujemy po rzędach i miejscach w rzędzie
         for (String rowLetter : layout.getRows()) {
             for (int seatNum = 1; seatNum <= layout.getSeatsPerRow(); seatNum++) {
-                // 3. Pytamy layout o strefę (SeatStandard)
+
                 SeatStandard std = layout.getStandardFor(rowLetter, seatNum);
 
                 // 4. Tworzymy obiekt Seat i dodajemy do listy seats
@@ -44,7 +42,6 @@ public abstract class Screening {
             }
         }
     }
-
 
     public Movie getMovie() {
         return movie;
